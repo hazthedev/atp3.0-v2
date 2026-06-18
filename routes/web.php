@@ -20,6 +20,9 @@ Route::get('/fleet/aircraft/{registration}/airworthiness', fn (string $registrat
     'registration' => $registration,
 ]))->name('fleet.aircraft.airworthiness');
 
+// Administration (Phase 6 — reference data)
+Route::get('/admin/aircraft-types', fn () => view('admin.aircraft-types'))->name('admin.aircraft-types');
+
 // MRO (Phase 6 — built)
 Route::get('/mro/work-packages', fn () => view('mro.work-packages'))->name('mro.work-packages');
 

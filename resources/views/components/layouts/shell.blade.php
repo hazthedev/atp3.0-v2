@@ -5,7 +5,7 @@
 @php
     $nav = [
         ['key' => 'dashboard', 'label' => 'Dashboard', 'route' => 'dashboard'],
-        ['key' => 'administration', 'label' => 'Administration', 'route' => 'stub'],
+        ['key' => 'administration', 'label' => 'Administration', 'route' => 'admin.aircraft-types'],
         ['key' => 'business-partners', 'label' => 'Business Partners', 'route' => 'stub'],
         ['key' => 'inventory', 'label' => 'Inventory', 'route' => 'stub'],
         ['key' => 'hr', 'label' => 'Human Resources', 'route' => 'stub'],
