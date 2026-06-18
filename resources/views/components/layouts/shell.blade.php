@@ -12,7 +12,7 @@
         ['key' => 'technical-data', 'label' => 'Technical Data', 'route' => 'stub'],
         ['key' => 'fleet', 'label' => 'Fleet', 'route' => 'fleet.index'],
         ['key' => 'flight', 'label' => 'Flight Recording', 'route' => 'stub'],
-        ['key' => 'mro', 'label' => 'MRO', 'route' => 'stub'],
+        ['key' => 'mro', 'label' => 'MRO', 'route' => 'mro.work-packages'],
         ['key' => 'reports', 'label' => 'Reports', 'route' => 'stub'],
     ];
 @endphp

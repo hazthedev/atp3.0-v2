@@ -20,6 +20,9 @@ Route::get('/fleet/aircraft/{registration}/airworthiness', fn (string $registrat
     'registration' => $registration,
 ]))->name('fleet.aircraft.airworthiness');
 
+// MRO (Phase 6 — built)
+Route::get('/mro/work-packages', fn () => view('mro.work-packages'))->name('mro.work-packages');
+
 // Modules not yet built — honest stub so the nav never dead-ends
 Route::get('/m/{module}', fn (string $module) => view('stub', ['module' => $module]))->name('stub');
 
