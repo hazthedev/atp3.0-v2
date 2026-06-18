@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class WorkPackage extends Model
@@ -19,6 +20,11 @@ class WorkPackage extends Model
         'prepared_date' => 'date',
         'lock_version' => 'integer',
     ];
+
+    public function functionalLocation(): BelongsTo
+    {
+        return $this->belongsTo(FunctionalLocation::class);
+    }
 
     public function tasks(): HasMany
     {
