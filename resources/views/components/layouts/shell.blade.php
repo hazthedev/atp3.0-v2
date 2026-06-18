@@ -9,7 +9,7 @@
         ['key' => 'business-partners', 'label' => 'Business Partners', 'route' => 'stub'],
         ['key' => 'inventory', 'label' => 'Inventory', 'route' => 'stub'],
         ['key' => 'hr', 'label' => 'Human Resources', 'route' => 'stub'],
-        ['key' => 'technical-data', 'label' => 'Technical Data', 'route' => 'stub'],
+        ['key' => 'technical-data', 'label' => 'Technical Data', 'route' => 'technical-data.maintenance-programs'],
         ['key' => 'fleet', 'label' => 'Fleet', 'route' => 'fleet.index'],
         ['key' => 'flight', 'label' => 'Flight Recording', 'route' => 'flight.record'],
         ['key' => 'mro', 'label' => 'MRO', 'route' => 'mro.work-packages'],
