@@ -13,7 +13,7 @@
         ['key' => 'fleet', 'label' => 'Fleet', 'route' => 'fleet.index'],
         ['key' => 'flight', 'label' => 'Flight Recording', 'route' => 'flight.record'],
         ['key' => 'mro', 'label' => 'MRO', 'route' => 'mro.work-packages'],
-        ['key' => 'reports', 'label' => 'Reports', 'route' => 'stub'],
+        ['key' => 'reports', 'label' => 'Reports', 'route' => 'reports.fleet-status'],
     ];
 @endphp
 <!DOCTYPE html>
