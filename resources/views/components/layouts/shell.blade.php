@@ -11,7 +11,7 @@
         ['key' => 'hr', 'label' => 'Human Resources', 'route' => 'stub'],
         ['key' => 'technical-data', 'label' => 'Technical Data', 'route' => 'stub'],
         ['key' => 'fleet', 'label' => 'Fleet', 'route' => 'fleet.index'],
-        ['key' => 'flight', 'label' => 'Flight Recording', 'route' => 'stub'],
+        ['key' => 'flight', 'label' => 'Flight Recording', 'route' => 'flight.record'],
         ['key' => 'mro', 'label' => 'MRO', 'route' => 'mro.work-packages'],
         ['key' => 'reports', 'label' => 'Reports', 'route' => 'stub'],
     ];
