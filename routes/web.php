@@ -32,6 +32,9 @@ Route::get('/flight/record', fn () => view('flight.flight-entry'))->name('flight
 // MRO (Phase 6 — built)
 Route::get('/mro/work-packages', fn () => view('mro.work-packages'))->name('mro.work-packages');
 
+// Inventory (Phase 6 — built)
+Route::get('/inventory/items', fn () => view('inventory.item-master-data'))->name('inventory.items');
+
 // Reports (Phase 6 — built)
 Route::get('/reports/fleet-status', fn () => view('reports.fleet-status'))->name('reports.fleet-status');
 

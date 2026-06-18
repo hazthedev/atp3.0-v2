@@ -7,7 +7,7 @@
         ['key' => 'dashboard', 'label' => 'Dashboard', 'route' => 'dashboard'],
         ['key' => 'administration', 'label' => 'Administration', 'route' => 'admin.aircraft-types'],
         ['key' => 'business-partners', 'label' => 'Business Partners', 'route' => 'stub'],
-        ['key' => 'inventory', 'label' => 'Inventory', 'route' => 'stub'],
+        ['key' => 'inventory', 'label' => 'Inventory', 'route' => 'inventory.items'],
         ['key' => 'hr', 'label' => 'Human Resources', 'route' => 'stub'],
         ['key' => 'technical-data', 'label' => 'Technical Data', 'route' => 'technical-data.maintenance-programs'],
         ['key' => 'fleet', 'label' => 'Fleet', 'route' => 'fleet.index'],
