@@ -90,4 +90,8 @@
     ::selection {
         background: var(--color-accent-100);
     }
+
+    [x-cloak] {
+        display: none !important;
+    }
 }

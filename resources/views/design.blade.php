@@ -69,5 +69,55 @@
                 </tbody>
             </table>
         </x-ui.card>
+        <x-ui.card title="Form controls">
+            <div class="grid max-w-sm gap-3">
+                <x-ui.select>
+                    <option>Overdue</option>
+                    <option>Due Soon</option>
+                    <option>OK</option>
+                </x-ui.select>
+                <x-ui.textarea rows="2" placeholder="Remarks…"></x-ui.textarea>
+                <x-ui.checkbox label="Propagate to installed components" />
+            </div>
+        </x-ui.card>
+
+        <x-ui.card title="Page header + table shell" :padded="false">
+            <div class="p-4">
+                <x-ui.page-header title="Fleet Management" subtitle="9 aircraft">
+                    <x-slot:actions>
+                        <x-ui.button variant="secondary" size="sm">Export</x-ui.button>
+                        <x-ui.button variant="primary" size="sm">New Aircraft</x-ui.button>
+                    </x-slot:actions>
+                </x-ui.page-header>
+                <div class="mt-3">
+                    <x-ui.table>
+                        <x-slot:head>
+                            <th class="px-3 py-2 font-medium">Registration</th>
+                            <th class="px-3 py-2 font-medium">Type</th>
+                            <th class="px-3 py-2 font-medium">Airworthiness</th>
+                        </x-slot:head>
+                        <tr class="hover:bg-neutral-50">
+                            <td class="px-3 py-2 font-medium text-accent-700">9M-WBD</td>
+                            <td class="px-3 py-2 text-neutral-600">AW139</td>
+                            <td class="px-3 py-2"><x-ui.status-pill tone="ok">Airworthy</x-ui.status-pill></td>
+                        </tr>
+                        <tr class="hover:bg-neutral-50">
+                            <td class="px-3 py-2 font-medium text-accent-700">M104-04</td>
+                            <td class="px-3 py-2 text-neutral-600">AW139</td>
+                            <td class="px-3 py-2"><x-ui.status-pill tone="overdue">Not Airworthy</x-ui.status-pill></td>
+                        </tr>
+                    </x-ui.table>
+                </div>
+            </div>
+        </x-ui.card>
+
+        <x-ui.card title="Modal">
+            <x-ui.modal title="Record Counter">
+                <x-slot:trigger>
+                    <x-ui.button variant="secondary">Open modal</x-ui.button>
+                </x-slot:trigger>
+                <p class="text-sm text-neutral-600">Modal body — Alpine-driven, Escape and backdrop close, focus-trapped.</p>
+            </x-ui.modal>
+        </x-ui.card>
     </div>
 </x-layouts.app>
