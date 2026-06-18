@@ -3,7 +3,91 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 
+/*
+  ATP 3.0 v2 — design system (Phase 6 foundation).
+  Direction: Linear-like — minimal, sharp, calm-but-dense. Muted cool-neutral palette,
+  ONE disciplined indigo accent (primary actions + active state only), crisp 1px borders
+  over heavy shadows, tabular numerals for data. No gradients, no decorative noise.
+  CSS-first @theme (Tailwind 4 / OKLCH).
+*/
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', 'Menlo', monospace;
+
+    /* Cool-neutral scale (the 95% of the UI) */
+    --color-neutral-50:  oklch(0.985 0.002 264);
+    --color-neutral-100: oklch(0.970 0.003 264);
+    --color-neutral-200: oklch(0.922 0.004 264);
+    --color-neutral-300: oklch(0.870 0.005 264);
+    --color-neutral-400: oklch(0.708 0.008 264);
+    --color-neutral-500: oklch(0.556 0.010 264);
+    --color-neutral-600: oklch(0.446 0.011 264);
+    --color-neutral-700: oklch(0.370 0.012 264);
+    --color-neutral-800: oklch(0.270 0.012 264);
+    --color-neutral-900: oklch(0.210 0.012 264);
+    --color-neutral-950: oklch(0.140 0.010 264);
+
+    /* The one accent — used for primary actions and active state, nothing decorative */
+    --color-accent-50:  oklch(0.965 0.018 264);
+    --color-accent-100: oklch(0.930 0.040 264);
+    --color-accent-300: oklch(0.780 0.105 264);
+    --color-accent-500: oklch(0.585 0.170 264);
+    --color-accent-600: oklch(0.520 0.175 264);
+    --color-accent-700: oklch(0.460 0.165 264);
+
+    /* Muted semantic status (Overdue / Due Soon / OK; airworthy verdicts) */
+    --color-success-100: oklch(0.945 0.045 150);
+    --color-success-500: oklch(0.620 0.130 150);
+    --color-success-700: oklch(0.470 0.110 150);
+    --color-warning-100: oklch(0.955 0.060 80);
+    --color-warning-500: oklch(0.760 0.130 75);
+    --color-warning-700: oklch(0.560 0.110 70);
+    --color-danger-100:  oklch(0.945 0.035 25);
+    --color-danger-500:  oklch(0.585 0.180 25);
+    --color-danger-700:  oklch(0.470 0.170 25);
+
+    /* Tight radius (Linear-ish), no pill-everything */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+
+    /* One subtle elevation — borders do the work, not shadows */
+    --shadow-sm: 0 1px 2px 0 oklch(0.21 0.012 264 / 0.04);
+    --shadow-md: 0 2px 8px -2px oklch(0.21 0.012 264 / 0.08);
+}
+
+@layer base {
+    *,
+    ::after,
+    ::before {
+        /* crisp hairline default border (Tailwind v4 no longer defaults to gray-200) */
+        border-color: var(--color-neutral-200);
+    }
+
+    html {
+        font-feature-settings: 'cv11', 'ss01';
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+        background: var(--color-neutral-50);
+        color: var(--color-neutral-900);
+    }
+
+    /* Numeric, dense-data context: tabular figures so columns align */
+    table, .tabular, [data-numeric] {
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* Quiet, fast, consistent focus — accessibility basic, not decorative */
+    :focus-visible {
+        outline: 2px solid var(--color-accent-500);
+        outline-offset: 1px;
+        border-radius: var(--radius-sm);
+    }
+
+    ::selection {
+        background: var(--color-accent-100);
+    }
 }
