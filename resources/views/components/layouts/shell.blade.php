@@ -6,9 +6,9 @@
     $nav = [
         ['key' => 'dashboard', 'label' => 'Dashboard', 'route' => 'dashboard'],
         ['key' => 'administration', 'label' => 'Administration', 'route' => 'admin.aircraft-types'],
-        ['key' => 'business-partners', 'label' => 'Business Partners', 'route' => 'stub'],
+        ['key' => 'business-partners', 'label' => 'Business Partners', 'route' => 'business-partners.index'],
         ['key' => 'inventory', 'label' => 'Inventory', 'route' => 'inventory.items'],
-        ['key' => 'hr', 'label' => 'Human Resources', 'route' => 'stub'],
+        ['key' => 'hr', 'label' => 'Human Resources', 'route' => 'hr.employees'],
         ['key' => 'technical-data', 'label' => 'Technical Data', 'route' => 'technical-data.maintenance-programs'],
         ['key' => 'fleet', 'label' => 'Fleet', 'route' => 'fleet.index'],
         ['key' => 'flight', 'label' => 'Flight Recording', 'route' => 'flight.record'],
