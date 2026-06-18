@@ -34,8 +34,8 @@ return new class extends Migration
 
         Schema::create('maintenance_program_item_counters', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('maintenance_program_item_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('counter_ref_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('maintenance_program_item_id')->constrained(indexName: 'mpic_mpi_fk')->cascadeOnDelete();
+            $table->foreignId('counter_ref_id')->constrained(indexName: 'mpic_ctr_fk')->cascadeOnDelete();
             $table->decimal('threshold', 12, 2)->nullable();   // first-due
             $table->decimal('interval', 12, 2)->nullable();    // repeat
             $table->decimal('alarm', 12, 2)->nullable();       // due-soon margin
@@ -46,21 +46,21 @@ return new class extends Migration
         // assignment pivot — multiple rows over time; "still assigned" = date_unassigned NULL
         Schema::create('maintenance_program_functional_location', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('maintenance_program_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('functional_location_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('maintenance_program_id')->constrained(indexName: 'mpfl_mp_fk')->cascadeOnDelete();
+            $table->foreignId('functional_location_id')->constrained(indexName: 'mpfl_fl_fk')->cascadeOnDelete();
             $table->date('date_assigned')->nullable();
             $table->date('date_unassigned')->nullable();
             $table->string('approval_status')->default('Approved');
             $table->timestamps();
 
-            $table->index(['functional_location_id', 'date_unassigned']);
+            $table->index(['functional_location_id', 'date_unassigned'], 'mpfl_fl_unassigned_idx');
         });
 
         Schema::create('maintenance_program_compliance', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('functional_location_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('maintenance_program_item_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('counter_ref_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('functional_location_id')->constrained(indexName: 'mpc_fl_fk')->cascadeOnDelete();
+            $table->foreignId('maintenance_program_item_id')->constrained(indexName: 'mpc_mpi_fk')->cascadeOnDelete();
+            $table->foreignId('counter_ref_id')->nullable()->constrained(indexName: 'mpc_ctr_fk')->nullOnDelete();
             $table->decimal('reading_at_completion', 15, 4)->nullable();
             $table->date('completed_date')->nullable();
             $table->string('work_reference')->nullable();

@@ -54,4 +54,17 @@ behavior is NOT logged here as a done change; it goes to the user as a question 
 - **What changed:** Flight Details captures **absolute** after-flight readings (like the Technical Log path); a correction **reverses-and-replaces** rather than additively re-ingesting; both flight paths share one idempotency/correction model.
 - **Why it's better:** eliminates the over-count-on-edit bug, unifies the two flight handover paths, and makes flight corrections behave like every other counter correction. **Business rule preserved:** a flight still ages the same counter by the same flown amount — only the capture/correction mechanism changes.
 
+## 7. Explicit short FK/index names (MySQL 64-char identifier limit) — caught by running on MySQL
+**Status:** found + fixed when migrations first ran on MySQL (the moment entry #1 paid off).
+
+- **Old approach:** relied on Laravel's auto-generated FK/index names. On long table+column combos (e.g. `maintenance_program_item_counters_maintenance_program_item_id_foreign`) these exceed MySQL's **64-char identifier limit**. SQLite doesn't enforce it, so the SQLite smoke-validation passed while MySQL rejected the migration with error 1059 — the *exact* class of bug the reference repo hit ("shorten Maintenance Program index/FK names for MySQL").
+- **What changed:** explicit short constraint names (`mpic_*`, `mpfl_*`, `mpc_*`, `aci_*`, `cvfl_*`) via `constrained(indexName: …)` and named `index()`/`unique()` on the long-named tables.
+- **Why it's better:** migrations now run clean on MySQL 8.0 (verified). This is the concrete proof that validating on the production engine — not SQLite — catches real bugs SQLite hides (reinforces entry #1).
+
+## 8. MySQL verification complete (Phases 1 & 5 closed on the real engine)
+**Status:** done 2026-06-18.
+
+- All 14 migrations run clean on **MySQL 8.0.44**; demo seed loads; every module screen renders 200 live on MySQL.
+- The lost-update concurrency proof (`CounterLostUpdateMysqlTest`) **executes and passes on MySQL** (FOR UPDATE row lock → second connection hits lock-wait-timeout 1205) — the test v1 left skipped now genuinely runs. A `mysql_second` connection was added for the cross-connection contention; the test deliberately avoids `RefreshDatabase` (its per-test transaction would hide the committed row from the second connection).
+
 <!-- Further entries appended as improvements are made during Phases 3–6. -->

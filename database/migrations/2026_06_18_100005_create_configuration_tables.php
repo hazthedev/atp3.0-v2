@@ -18,8 +18,8 @@ return new class extends Migration
 
         Schema::create('applicable_configuration_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('applicable_configuration_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('parent_id')->nullable()->constrained('applicable_configuration_items')->cascadeOnDelete();
+            $table->foreignId('applicable_configuration_id')->constrained(indexName: 'aci_ac_fk')->cascadeOnDelete();
+            $table->foreignId('parent_id')->nullable()->constrained('applicable_configuration_items', indexName: 'aci_parent_fk')->cascadeOnDelete();
             $table->string('ata_code')->nullable();
             $table->string('item_name');
             $table->string('allowable_part_number')->nullable();   // config match key (= items.code)
@@ -41,8 +41,8 @@ return new class extends Migration
 
         Schema::create('configuration_variant_functional_location', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('configuration_variant_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('functional_location_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('configuration_variant_id')->constrained(indexName: 'cvfl_cv_fk')->cascadeOnDelete();
+            $table->foreignId('functional_location_id')->constrained(indexName: 'cvfl_fl_fk')->cascadeOnDelete();
             $table->timestamps();
 
             $table->unique(['configuration_variant_id', 'functional_location_id'], 'cv_fl_unique');
