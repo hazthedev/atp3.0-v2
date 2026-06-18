@@ -24,6 +24,19 @@ class FunctionalLocation extends Model
         return $this->hasMany(FunctionalLocationCounter::class);
     }
 
+    public function maintenancePrograms(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(MaintenanceProgram::class, 'maintenance_program_functional_location')
+            ->withPivot(['date_assigned', 'date_unassigned', 'approval_status'])
+            ->withTimestamps();
+    }
+
+    public function configurationVariants(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(ConfigurationVariant::class, 'configuration_variant_functional_location')
+            ->withTimestamps();
+    }
+
     /** Only top-of-tree equipment links directly to the aircraft FL. */
     public function topEquipment(): HasMany
     {
