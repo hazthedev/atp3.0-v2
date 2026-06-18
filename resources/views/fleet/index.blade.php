@@ -15,7 +15,9 @@
                     <td class="px-3 py-2 font-mono text-[13px] text-neutral-600">{{ $ac->code }}</td>
                     <td class="px-3 py-2 text-neutral-600">{{ $ac->aircraftType?->code }}</td>
                     <td class="px-3 py-2 text-right">
-                        <a href="{{ route('fleet.aircraft.counters', $ac->registration) }}" class="text-[13px] font-medium text-accent-700 hover:underline">Counters →</a>
+                        <a href="{{ route('fleet.aircraft.counters', $ac->registration) }}" class="text-[13px] font-medium text-accent-700 hover:underline">Counters</a>
+                        <span class="text-neutral-300">·</span>
+                        <a href="{{ route('fleet.aircraft.airworthiness', $ac->registration) }}" class="text-[13px] font-medium text-accent-700 hover:underline">Airworthiness →</a>
                     </td>
                 </tr>
             @empty

@@ -16,6 +16,10 @@ Route::get('/fleet/aircraft/{registration}/counters', fn (string $registration) 
     'registration' => $registration,
 ]))->name('fleet.aircraft.counters');
 
+Route::get('/fleet/aircraft/{registration}/airworthiness', fn (string $registration) => view('fleet.airworthiness', [
+    'registration' => $registration,
+]))->name('fleet.aircraft.airworthiness');
+
 // Modules not yet built — honest stub so the nav never dead-ends
 Route::get('/m/{module}', fn (string $module) => view('stub', ['module' => $module]))->name('stub');
 
